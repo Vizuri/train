@@ -46,15 +46,10 @@ sleep 5
 # docker
 curl -sSL https://get.docker.com/ | sh
 
-# updates
-apt-get update
-apt-get -y upgrade
-apt-get install -y git tree jq linux-image-extra-4.2.0-23-generic linux-image-4.2.0.23-generic
-
 usermod -aG docker ubuntu
 
 # docker compose
-curl -L https://github.com/docker/compose/releases/download/1.6.2/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
+curl -L https://github.com/docker/compose/releases/download/1.6.0/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
 chmod +x /usr/local/bin/docker-compose
 
 # packages
@@ -64,8 +59,6 @@ apt-get install -y git tree jq
 {0}
 
 {{dinfo}}
-
-reboot
 '''.format(txt)
 
 
@@ -84,11 +77,6 @@ echo $FQDN > /etc/hostname
 service hostname restart
 sleep 5
 
-# updates
-apt-get update
-apt-get -y upgrade
-apt-get install -y git tree jq linux-image-extra-4.2.0-23-generic linux-image-4.2.0.23-generic
-
 # docker
 curl -sSL https://get.docker.com/ | sh
 
@@ -105,8 +93,6 @@ apt-get install -y git tree jq
 docker run --name ucp --rm -v /var/run/docker.sock:/var/run/docker.sock docker/ucp images
 
 {dinfo}
-
-reboot
 '''
 
 
