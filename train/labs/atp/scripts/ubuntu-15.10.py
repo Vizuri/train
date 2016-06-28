@@ -5,7 +5,7 @@
 ubuntu_pass = raw_input("Enter password for 'ubuntu' user: ")
 
 # scripts
-PRIMARY_OS = 'Ubuntu-15.04'
+PRIMARY_OS = 'Ubuntu-15.10'
 PRIMARY = '''#!/bin/sh
 #
 FQDN="{{fqdn}}"
