@@ -135,10 +135,10 @@ Recommended AWS SES configuration:
 
 The following section is a walk-through of usage for personal use (Useful for demos and individuals involved in QA/documentation/support teams) 
 
-Pull the Docker image:
+Pull the associated Docker image, note that you may want to use a specific version of the image:
 
 ```
-vagrant@dockertest:~$ docker pull kizbitz/train
+vagrant@dockertest:~$ docker pull vizuri/train
 Using default tag: latest
 latest: Pulling from kizbitz/train
 843e2bded498: Pull complete
