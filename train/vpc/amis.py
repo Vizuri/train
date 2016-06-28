@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+
 """Dictionaries for AWS AMI's per region"""
 
 # AMI's for regions
@@ -13,7 +14,8 @@ AP_NORTHEAST_1 = {
     'RHEL-7.1': 'ami-b1b458b1',
     'SUSE-SLES-12': 'ami-d54a79d4',
     'Ubuntu-14.04': 'ami-5abca75b',
-    'Ubuntu-15.04': 'ami-1c0c3672',
+    'Ubuntu-15.10': 'ami-3f3fd75e',
+    'Ubuntu-16.04': 'ami-5d38d93c',
 }
 
 AP_SOUTHEAST_1 = {
@@ -25,7 +27,8 @@ AP_SOUTHEAST_1 = {
     'RHEL-7.1': 'ami-dc1c2b8e',
     'SUSE-SLES-12': 'ami-84b392d6',
     'Ubuntu-14.04': 'ami-36c6ec64',
-    'Ubuntu-15.04': 'ami-327cb351',
+    'Ubuntu-15.10': 'ami-d466b6b7',
+    'Ubuntu-16.04': 'ami-a35284c0',
 }
 
 AP_SOUTHEAST_2 = {
@@ -37,7 +40,8 @@ AP_SOUTHEAST_2 = {
     'RHEL-7.1': 'ami-d3daace9',
     'SUSE-SLES-12': 'ami-b90e6283',
     'Ubuntu-14.04': 'ami-e7eb9fdd',
-    'Ubuntu-15.04': 'ami-c3b490a0',
+    'Ubuntu-15.10': 'ami-a9371eca',
+    'Ubuntu-16.04': 'ami-f4361997',
 }
 
 EU_CENTRAL_1 = {
@@ -47,7 +51,8 @@ EU_CENTRAL_1 = {
     'DEBIAN-WHEEZY': 'ami-98043785',
     'SUSE-SLES-12': 'ami-a22610bf',
     'Ubuntu-14.04': 'ami-4ec4f653',
-    'Ubuntu-15.04': 'ami-f39e869f',
+    'Ubuntu-15.10': 'ami-8ebe57e1',
+    'Ubuntu-16.04': 'ami-f9e30f96',
 }
 
 EU_WEST_1 = {
@@ -59,7 +64,8 @@ EU_WEST_1 = {
     'RHEL-7.1': 'ami-25158352',
     'SUSE-SLES-12': 'ami-e801af9f',
     'Ubuntu-14.04': 'ami-f5810f82',
-    'Ubuntu-15.04': 'ami-3a229449',
+    'Ubuntu-15.10': 'ami-2dbe225e',
+    'Ubuntu-16.04': 'ami-7a138709',
 }
 
 SA_EAST_1 = {
@@ -71,7 +77,8 @@ SA_EAST_1 = {
     'RHEL-7.1': 'ami-09e25b14',
     'SUSE-SLES-12': 'ami-f102b6ec',
     'Ubuntu-14.04': 'ami-55f14e48',
-    'Ubuntu-15.04': 'ami-7b24a417',
+    'Ubuntu-15.10': 'ami-ced75da2',
+    'Ubuntu-16.04': 'ami-0d5dd561',
 }
 
 US_EAST_1 = {
@@ -85,7 +92,8 @@ US_EAST_1 = {
     'SUSE-SLES-12': 'ami-aeb532c6',
     'Ubuntu-12.04': 'ami-427a392a',
     'Ubuntu-14.04': 'ami-767a391e',
-    'Ubuntu-15.04': 'ami-f50e209f',
+    'Ubuntu-15.10': 'ami-5fbc4632',
+    'Ubuntu-16.04': 'ami-13be557e'
 }
 
 US_WEST_1 = {
@@ -98,7 +106,8 @@ US_WEST_1 = {
     'RHEL-7.1': 'ami-a540a5e1',
     'SUSE-SLES-12': 'ami-b95b4ffc',
     'Ubuntu-14.04': 'ami-8ebba3cb',
-    'Ubuntu-15.04': 'ami-ae1b6dce',
+    'Ubuntu-15.10': 'ami-610d4801',
+    'Ubuntu-16.04': 'ami-84423ae4',
 }
 
 US_WEST_2 = {
@@ -111,6 +120,7 @@ US_WEST_2 = {
     'RHEL-7.1': 'ami-4dbf9e7d',
     'SUSE-SLES-12': 'ami-d7450be7',
     'Ubuntu-14.04': 'ami-1b471c2b',
-    'Ubuntu-15.04': 'ami-6206e002',
-    'JTU-LDAP': 'ami-be39d1de',
+    'Ubuntu-15.10': 'ami-0af8026a',
+    'Ubuntu-16.04': 'ami-06b94666',
+    'JTU-LDAP': 'ami-25f83c45',
 }

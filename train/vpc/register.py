@@ -6,7 +6,7 @@ import string
 import sys
 
 from config import *
-import email
+import ses
 import labs
 from util import check_email_template
 import vpc
@@ -15,9 +15,6 @@ import vpc
 def _checks():
     """Requirements"""
 
-    if not os.environ.get("MANDRILL_KEY"):
-        print "\nERROR: Required environment variable 'MANDRILL_KEY' not set!\n"
-        sys.exit()
     if os.environ.get('USER_FILE'):
         print 'ERROR: USER_FILE environment variable must not be set.'
         sys.exit()
@@ -29,17 +26,16 @@ def _checks():
 def set_username(user):
     """Create username from email"""
 
-    username = user.split('@')[0].lower()
+    count = 0
+    username = user.split('@')[0].lower().strip()
 
     for c in string.punctuation:
         username = username.replace(c, '')
 
-    if os.path.exists('/host/{0}/users/{1}'.format(VPC, username)):
-        count = 1
-        username = username + str(count)
-        while os.path.exists('/host/{0}/users/{1}'.format(VPC, username)):
-            count += 1
-            username = username + str(count)
+    basename = username
+    while os.path.exists('/host/{0}/users/{1}'.format(VPC, username)):
+        count += 1
+        username = basename + str(count)
 
     return username
 
@@ -85,7 +81,7 @@ def registration(conn, user_vpc, lab):
 
         vpc.create_key_pairs()
         labs.launch_lab(conn, user_vpc, lab)
-        email.email_credentials(conn)
+        ses.email_credentials()
 
         print '\n'
         print '-' * 35

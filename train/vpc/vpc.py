@@ -61,7 +61,6 @@ def _create_gateway(conn, vpc):
     print 'Creating gateway: {0} ...'.format(IGW)
 
     gateway = conn.create_internet_gateway()
-    gateway.add_tag('Name', IGW)
 
     attempts=0
     while True:
@@ -69,10 +68,11 @@ def _create_gateway(conn, vpc):
             # workaround for race where the gateway may not be ready yet
             attempts += 1
             conn.attach_internet_gateway(gateway.id, vpc.id)
+            gateway.add_tag('Name', IGW)
             break
         except boto.exception.EC2ResponseError:
             time.sleep(1)
-            if attempts > 5:
+            if attempts > 10:
                 raise
 
     return gateway
@@ -115,7 +115,7 @@ def _create_subnets(conn, vpc, route_table):
                 """Getting AWS subnet status"""
                 if item.id == subnet.id:
                     subnet.state = item.state
-                    time.sleep(5)
+                    time.sleep(1)
 
         subnet.add_tag('Name', tag)
 
@@ -216,9 +216,34 @@ def _configure_default_security_group(conn, vpc):
                     to_port='3376',
                     cidr_ip='0.0.0.0/0')
 
+    sg[0].authorize(ip_protocol='udp',
+                    from_port='4789',
+                    to_port='4789',
+                    cidr_ip='0.0.0.0/0')
+
     sg[0].authorize(ip_protocol='tcp',
                     from_port='5000',
                     to_port='5000',
+                    cidr_ip='0.0.0.0/0')
+
+    sg[0].authorize(ip_protocol='tcp',
+                    from_port='6783',
+                    to_port='6783',
+                    cidr_ip='0.0.0.0/0')
+
+    sg[0].authorize(ip_protocol='udp',
+                    from_port='6783',
+                    to_port='6783',
+                    cidr_ip='0.0.0.0/0')
+
+    sg[0].authorize(ip_protocol='tcp',
+                    from_port='7946',
+                    to_port='7946',
+                    cidr_ip='0.0.0.0/0')
+
+    sg[0].authorize(ip_protocol='udp',
+                    from_port='7946',
+                    to_port='7946',
                     cidr_ip='0.0.0.0/0')
 
     sg[0].authorize(ip_protocol='tcp',
@@ -235,6 +260,17 @@ def _configure_default_security_group(conn, vpc):
                     from_port='9999',
                     to_port='9999',
                     cidr_ip='0.0.0.0/0')
+
+    sg[0].authorize(ip_protocol='tcp',
+                    from_port='12376',
+                    to_port='12376',
+                    cidr_ip='0.0.0.0/0')
+
+    sg[0].authorize(ip_protocol='tcp',
+                    from_port='12379',
+                    to_port='12386',
+                    cidr_ip='0.0.0.0/0')
+
 
 def create_interface(subnet_id, sids):
     """Creates AWS EC2 network interface"""
