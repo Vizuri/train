@@ -91,7 +91,7 @@ US_EAST_1 = {
     'RHEL-7.1': 'ami-12663b7a',
     'SUSE-SLES-12': 'ami-aeb532c6',
     'Ubuntu-12.04': 'ami-427a392a',
-    'Ubuntu-14.04': 'ami-767a391e',
+    'Ubuntu-14.04': 'ami-5ac2cd4d',
     'Ubuntu-15.10': 'ami-5fbc4632',
     'Ubuntu-16.04': 'ami-13be557e'
 }
