@@ -20,16 +20,23 @@ echo $FQDN > /etc/hostname
 service hostname restart
 sleep 5
 
-# docker os release
-curl -sSL https://get.docker.com/ | sh
+# uncomment either docker os release or docker specific release section
 
-# docker cs release
-#wget -qO- 'https://pgp.mit.edu/pks/lookup?op=get&search=0xee6d536cf7dc86e2d7d56f59a178ac6c6238f52e' | sudo apt-key add --import
-#apt-get update
-#apt-get install -y apt-transport-https
-#echo "deb https://packages.docker.com/1.9/apt/repo ubuntu-trusty main" | tee /etc/apt/sources.list.d/docker.list
-#apt-get update
-#apt-get install -y docker-engine
+# docker os release
+#curl -sSL https://get.docker.com/ | sh
+
+# install 1.12
+apt-get update
+apt-get -y install apt-transport-https ca-certificates
+apt-get -y install curl
+curl -fsSL https://yum.dockerproject.org/gpg | sudo apt-key add -
+apt-get -y install software-properties-common
+add-apt-repository "deb https://apt.dockerproject.org/repo ubuntu-trusty main"
+apt-get update
+apt-get -y install docker-engine=1.12.6-0~ubuntu-trusty
+# we need to add a hold here so that upgrade does not upgrade docker too
+apt-mark hold docker-engine
+
 
 usermod -aG docker ubuntu
 
