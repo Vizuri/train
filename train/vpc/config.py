@@ -81,6 +81,10 @@ VPC = check_env('VPC', 'train')
 # Root lab directory
 LAB_DIR = check_env('LAB_DIR', '/home/train/train/labs/')
 
+ # User defined tag
+USERTAG = check_env('USERTAG', 'NOTSET')
+
+
 # Full path to user configuration file
 USER_FILE = check_user_file(VPC, os.environ.get('USER_FILE'))
 

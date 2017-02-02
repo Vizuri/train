@@ -34,7 +34,7 @@ The tools provide a simple way to quickly create, manage, and destroy:
 ### Registration for training/testing
 
 - Bulk registration (Launch labs for users listed in a text file)
-- Registration mode: A 'Kiosk' style registration mode that provides a welcome message and prompts for email address used to launch labs. 
+- Registration mode: A 'Kiosk' style registration mode that provides a welcome message and prompts for email address used to launch labs.
 
 ## Requirements
 
@@ -108,6 +108,9 @@ VPC=<vpc-tag>
 
 # Template file for registration emails
 EMAIL_TEMPLATE=<path-to-template-file-in-container>
+
+# Optional user defined tag, default value is NOTSET
+USERTAG=<string>
 ```
 
 ### AWS SES Minimum Requirements
@@ -118,7 +121,7 @@ In order to send emails with **train** you must (at a minimum):
 - Verify a sending email address on your AWS account. See: http://docs.aws.amazon.com/ses/latest/DeveloperGuide/verify-email-addresses.html#verify-email-addresses-procedure
 - Request a limit increase and have your account migrated out of sandboxed mode. See: http://docs.aws.amazon.com/ses/latest/DeveloperGuide/request-production-access.html
 
-Recommended AWS SES configuration: 
+Recommended AWS SES configuration:
 
 - Use a custom **MAIL FROM** domain: http://docs.aws.amazon.com/ses/latest/DeveloperGuide/mail-from.html
 - Authenticate your emails. See: http://docs.aws.amazon.com/ses/latest/DeveloperGuide/authentication.html
@@ -133,12 +136,12 @@ Recommended AWS SES configuration:
 
 ## Walk-through - Personal Use
 
-The following section is a walk-through of usage for personal use (Useful for demos and individuals involved in QA/documentation/support teams) 
+The following section is a walk-through of usage for personal use (Useful for demos and individuals involved in QA/documentation/support teams)
 
-Pull the associated Docker image, note that you may want to use a specific version of the image:
+Pull the Docker image:
 
 ```
-vagrant@dockertest:~$ docker pull vizuri/train
+vagrant@dockertest:~$ docker pull kizbitz/train
 Using default tag: latest
 latest: Pulling from kizbitz/train
 843e2bded498: Pull complete
@@ -629,7 +632,7 @@ jbaker-demo:us-east-1:~$ tree /host/share
 jbaker-demo:us-east-1:~$
 ```
 
-List running labs and instances: 
+List running labs and instances:
 
 ```
 jbaker-demo:us-east-1:~$ train -l
@@ -777,7 +780,7 @@ The train-images CLI tool is used to manage AMI's for labs. Depending on how lon
 
 Notes:
 
-- Only one AMI is created per instance definition in instances.cfg. This will be the `<name>-0` instance when **NAME** is used in the definition or the zero index of the **NAMES** list. See: https://github.com/kizbitz/train/blob/master/train/labs/template/instances.cfg#L16-L22 
+- Only one AMI is created per instance definition in instances.cfg. This will be the `<name>-0` instance when **NAME** is used in the definition or the zero index of the **NAMES** list. See: https://github.com/kizbitz/train/blob/master/train/labs/template/instances.cfg#L16-L22
 - When launching a lab **train** checks for existing AMI images for the lab and will use those if present. If not, the standard cloud-init script is used.
 
 ### Example usage
@@ -916,7 +919,7 @@ jbaker-demo:us-east-1:~$
 
 If you switch VPCs often you can create a helper function and pass in your VPC for launching your container.
 
-Example function for Bash (~/.bashrc on your Docker host): 
+Example function for Bash (~/.bashrc on your Docker host):
 
 ```
 function train {

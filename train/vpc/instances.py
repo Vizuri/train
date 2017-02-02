@@ -24,7 +24,8 @@ def _create_tags(conn, instance, current, lab_tag, user, amibuild, amikey, scrip
             'User': '{0}'.format(user),
             'AMI-Build': '{0}'.format(amibuild),
             'AMI-Key': '{0}'.format(amikey),
-            'Script': '{0}'.format(script)}
+            'Script': '{0}'.format(script),
+            'Usertag': '{0}'.format(USERTAG)}
 
     conn.create_tags(current.id, tags)
 
