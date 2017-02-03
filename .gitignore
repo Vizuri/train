@@ -58,3 +58,10 @@ target/
 
 *.swp
 .DS_Store
+
+# working area for lab configuration
+sandbox/
+
+# pycharm ide
+.idea/
+
