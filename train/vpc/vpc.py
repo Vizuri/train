@@ -102,9 +102,13 @@ def _create_subnets(conn, vpc, route_table):
         print "10.0.{0}.0/20".format(current_ip)
 
         print 'Creating subnet: {0} ...'.format(tag)
-        subnet = conn.create_subnet(vpc.id,
+        try:
+            subnet = conn.create_subnet(vpc.id,
                                     "10.0.{0}.0/20".format(current_ip),
                                     availability_zone=zone)
+        except boto.exception.EC2ResponseError:
+            print "exception creating subnet, continuing"
+            continue
 
         # state polling copied from the following
         # http://stackoverflow.com/questions/22263300/aws-boto-how-to-refresh-subnet-state-after-creating-it-its-stuck-in-pending
